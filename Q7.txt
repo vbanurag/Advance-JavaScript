@@ -1,0 +1,16 @@
+function test() {
+console.log(a); //Line 1
+console.log(fun()); //Line2
+
+var a = 1;
+function fun() {
+return 2;
+}
+}
+
+test();
+
+Reason for this Question:
+
+line 1 : - in this undefined will be shown in console beacuse a is defined lated in the fnction body
+line2 :- in second it will call the function scope of fun() so it will return 2 in console.

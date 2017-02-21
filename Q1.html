@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Question 1</title>
+    <style>
+        .valid_form {
+            margin: auto 0px;
+            padding: 5px;
+            display: inline-block;
+        }
+    </style>
+    <script>
+        var err = {};
+
+        function validdate(dob) {
+            //console.log(""+(dob instanceOf Date));
+            if (isNaN(dob.getMonth())) {
+                err.message = "Please Enter a Valid Date";
+                throw err;
+            }
+        }
+
+        function update() {
+            var f_name = document.getElementById('fname').value;
+            var l_name = document.getElementById('lname').value;
+            var contact = document.getElementById('contact').value;
+            var dob = new Date(document.getElementById('dob').value);
+
+            var reg = new RegExp("^[a-zA-Z]+$");
+            try {
+                if (!(reg.test(f_name))) {
+                    err.message = "Alphabates allowed only in First Name";
+                    throw err;
+                } else if (!(reg.test(l_name))) {
+                    err.message = "Alphabates allowed only in Last Name";
+                    throw err;
+                } else if (isNaN(contact)) {
+                    err.message = "Number is only allowed"
+                    throw err;
+                } else if (contact.length > 10 || contact.length < 10) {
+                    err.message = "Please Enter a Valid Number";
+                    throw err;
+                } else if (validdate(dob)) {}
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    </script>
+    </style>
+</head>
+
+<body>
+    <h3>Insted using validation , use custom exception to handle all types of valid data Craete a Registration form which have following fileds <br>1. First Name (Only characters[a-z, A-Z] are allowed)<br> 2. Last Name (Only characters[a-z, A-Z] are allowed)<br>        3. Contact Number (Only digits [0-9], length should be 10)<br> 4. DOB (A valid date) All fields are mendetory, If user click on submit button and any field is wrong then should through an error as per type</h3>
+
+
+
+    <form class="valid_form">
+        <label>First Name:</label>
+        <input type="text" id="fname" placeholder="First Name: "><br />
+        <label>Last Name:</label>
+        <input type="text" id="lname" placeholder="Last Name: "><br />
+        <label>Contact Number:</label>
+        <input type="mobile" id="contact" placeholder="Contact Number"><br />
+        <label>Date Of Birth</label>
+        <input type="date" id="dob" placeholder="DOB"><br />
+    </form>
+
+
+
+
+    <input type="submit" onclick="update()">
+
+
+</body>
+
+</html>

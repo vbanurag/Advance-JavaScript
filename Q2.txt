@@ -1,0 +1,20 @@
+var myObject = {
+foo: "bar",
+func: function() {
+var self = this;
+        console.log("outer func: this.foo = " + this.foo); //line1
+        console.log("outer func: self.foo = " + self.foo); //line2
+(function() {
+        console.log("inner func: this.foo = " + this.foo); //line3
+        console.log("inner func: self.foo = " + self.foo); //line4
+}());
+}
+};
+myObject.func();
+
+Reason for the output of this code snippet:-
+
+line1:- in this it will call the myobject key which is defined earlier. print bar
+line2:- in this self variable having value this so it will call myObject ket and print bar
+line3:- In this it self executing function and foo is not defined under this scope so print undefined
+line4:- In this self.foo and scope of this function is inside the myobject so it will cal foo because in self we will define this and this call foo.
